@@ -17,9 +17,11 @@ class CreateMessagesTable extends Migration
             $table->increments('id');
             $table->string('message');
             $table->integer('user_id')->unsigned();
+            $table->integer('channel_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('channel_id')->references('id')->on('channels');
         });
     }
 
@@ -30,6 +32,8 @@ class CreateMessagesTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('messages');
+        Schema::enableForeignKeyConstraints();
     }
 }

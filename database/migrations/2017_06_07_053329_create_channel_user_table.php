@@ -31,6 +31,9 @@ class CreateChannelUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('channel_users');
+        //Remove foreign key first
+        Schema::disableForeignKeyConstraints();
+        Schema::dropIfExists('channel_user');
+        Schema::enableForeignKeyConstraints();
     }
 }
