@@ -1,0 +1,35 @@
+.chat-list {
+  .chat-item {
+    > a {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+  }
+}
+.chat-box {
+  .chat-conversation-box {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+
+    height: 400px;
+    max-height: 400px;
+
+    overflow-y: scroll;
+
+    .chat-conversation {
+      @include make-row;
+      .chat-message {
+        @include make-xs-column(8);
+        &.chat-own {
+          @include make-lg-column-offset(4);
+          text-align: right;
+        }
+        .chat-user {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}

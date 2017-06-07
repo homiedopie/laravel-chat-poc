@@ -10,9 +10,16 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
+Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['prefix' => 'chat'], function () {
+    Route::get('/', 'ChatController@index')->name('chat.index');
 });
 
-Route::get('/send_message', 'ChatController@sendMessage');
+/** TODO: Place the ajax routes in other file */
+Route::group(['prefix' => 'ajax', 'middleware' => 'ajax'], function(){
+    Route::group(['prefix' => 'chat'], function () {
+        Route::get('/send_message', 'ChatController@sendMessage')->name('chat.send-message');
+    });
+});

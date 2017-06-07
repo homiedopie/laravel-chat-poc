@@ -6,8 +6,21 @@ use Illuminate\Http\Request;
 
 class ChatController extends Controller
 {
-    public function sendMessage(Request $request)
+    /**
+     * ChatController constructor.
+     * Set middleware to auth
+     */
+    public function __construct()
     {
-        return view('chat');
+        $this->middleware('auth');
+    }
+
+    /**
+     * Return default chat index page
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function index()
+    {
+        return view('chat.index');
     }
 }
