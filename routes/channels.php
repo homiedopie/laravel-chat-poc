@@ -11,6 +11,13 @@
 |
 */
 
-Broadcast::channel('App.User.{id}', function ($user, $id) {
+Broadcast::channel('messages.global', function ($user) {
+    return true;
+});
+Broadcast::channel('messages.{hash}', function ($user, $hash) {
+    //TODO: check if user belongs to conversation
+    return true;
+});
+Broadcast::channel('users.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });

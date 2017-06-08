@@ -20,6 +20,6 @@ Route::group(['prefix' => 'chat'], function () {
 /** TODO: Place the ajax routes in other file */
 Route::group(['prefix' => 'ajax', 'middleware' => 'ajax'], function(){
     Route::group(['prefix' => 'chat'], function () {
-        Route::get('/send_message', 'ChatController@sendMessage')->name('chat.send-message');
+        Route::post('/send_message', 'ChatController@sendMessage')->name('chat.send-message');
     });
 });

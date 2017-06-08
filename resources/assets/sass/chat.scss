@@ -23,7 +23,7 @@
       .chat-message {
         @include make-xs-column(8);
         &.chat-own {
-          @include make-lg-column-offset(4);
+          @include make-xs-column-offset(4);
           text-align: right;
         }
         .chat-user {

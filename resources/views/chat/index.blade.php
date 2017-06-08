@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+    <script type="text/javascript">
+        var global_user = {{ $user_id }};
+    </script>
     <div class="container">
         <div class="row">
             <div class="col-md-4">
@@ -8,16 +11,20 @@
                     <div class="panel-heading">Global Chat</div>
                     <div class="panel-body">
                         <ul class="list-group chat-list">
-                            <li class="list-group-item chat-item active" data-channel="global" data-messages=""><a href="#">Everyone</a></li>
+                            <li class="list-group-item chat-item active" data-channel="global" data-messages="{{ json_encode($global_messages['messages']) }}"><a href="#">Everyone</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading">Private Chat</div>
                     <div class="panel-body">
-                       <ul class="list-group chat-list">
-                           <li class="list-group-item chat-item" data-channel="private" data-messages=""><a href="#">John</a></li>
-                           <li class="list-group-item chat-item" data-channel="private" data-messages=""><a href="#">Doe</a></li>
+                       <ul class="list-group chat-list chat-list-user {{!$chat_list ? 'chat-list-empty': ''}}">
+                           @if(!$chat_list)
+                            <li class="list-group-item">No chat mates</li>
+                           @endif
+                           @foreach($chat_list as $chat_item)
+                            <li class="list-group-item chat-item" data-channel="{{ $chat_item['hash'] }}" data-messages="{{ json_encode($chat_item['messages']) }}"><a href="#">{{ $chat_item['user'] }}</a></li>
+                           @endforeach
                        </ul>
                     </div>
                 </div>
