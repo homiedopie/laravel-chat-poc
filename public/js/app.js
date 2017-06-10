@@ -1672,8 +1672,8 @@ window.Pusher = __webpack_require__(34);
 
 window.Echo = new __WEBPACK_IMPORTED_MODULE_0_laravel_echo___default.a({
   broadcaster: 'pusher',
-  key: 'b03cffc10e5907a74904',
-  cluster: 'ap1',
+  key: '83fc4b6b8fc14a715cb5',
+  cluster: 'eu',
   encrypted: true
 });
 
@@ -1894,6 +1894,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         }
         setActiveChannel($chat_item_user.length ? $chat_item_user : $chat_item);
     };
+
     var addMessage = function addMessage(message_object) {
         var is_own_message = false;
         var message_user_id = message_object.user_id;
